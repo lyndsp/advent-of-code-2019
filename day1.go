@@ -6,8 +6,13 @@ func CalculateFuelRequired(mass int) int {
 }
 
 // SumFuelForMasses calculates total fuel fot the given input of masses
-func SumFuelForMasses(mass [2]int) int {
-	return 4
+func SumFuelForMasses(masses [2]int) int {
+	sum := 0
+	for _, mass := range masses {
+		sum += CalculateFuelRequired(mass)
+	}
+
+	return sum
 }
 
 func main() {
