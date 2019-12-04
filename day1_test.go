@@ -21,3 +21,23 @@ func TestDay1FuelForSingleModuleMass12(t *testing.T) {
 		t.Errorf("got %d want %d", got, want)
 	}
 }
+
+func TestDay1FuelForSingleModuleMass14(t *testing.T) {
+	got := CalculateFuelRequired(14)
+
+	want := 2
+
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
+	}
+}
+
+func TestDay1FuelForSingleModuleMass1969(t *testing.T) {
+	got := CalculateFuelRequired(1969)
+
+	want := 654
+
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
+	}
+}
