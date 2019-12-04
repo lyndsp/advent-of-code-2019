@@ -26,8 +26,20 @@ func TestDay1FuelForSingleModuleMass(t *testing.T) {
 		t.Run(fmt.Sprint(tt.mass), func(t *testing.T) {
 			out := CalculateFuelRequired(tt.mass)
 			if out != tt.fuel {
-				t.Errorf("got %d, want %d", out, tt.fuel)
+				t.Errorf("got %v, want %v", out, tt.fuel)
 			}
 		})
+	}
+}
+
+func TestDay1SumFuelForMasses(t *testing.T) {
+	moduleMasses := [2]int{12, 14}
+
+	got := SumFuelForMasses(moduleMasses)
+
+	want := 4
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
 	}
 }
