@@ -2,42 +2,32 @@
 The Fuel Counter-Upper needs to know the total fuel requirement.
 To find it, individually calculate the fuel needed for the mass of each module (your puzzle input),
  then add together all the fuel values.
-
-Fuel required to launch a given module is based on its mass.
-Specifically, to find the fuel required for a module,
-	take its mass, divide by three, round down, and subtract 2.
 */
 
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestDay1FuelForSingleModuleMass12(t *testing.T) {
-	got := CalculateFuelRequired(12)
-
-	want := 2
-
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
-	}
+var fuelForMasstests = []struct {
+	fuel int
+	mass int
+}{
+	{2, 12},
+	{2, 14},
+	{654, 1969},
 }
 
-func TestDay1FuelForSingleModuleMass14(t *testing.T) {
-	got := CalculateFuelRequired(14)
+func TestDay1FuelForSingleModuleMass(t *testing.T) {
 
-	want := 2
-
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
-	}
-}
-
-func TestDay1FuelForSingleModuleMass1969(t *testing.T) {
-	got := CalculateFuelRequired(1969)
-
-	want := 654
-
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
+	for _, tt := range fuelForMasstests {
+		t.Run(fmt.Sprint(tt.mass), func(t *testing.T) {
+			out := CalculateFuelRequired(tt.mass)
+			if out != tt.fuel {
+				t.Errorf("got %d, want %d", out, tt.fuel)
+			}
+		})
 	}
 }
