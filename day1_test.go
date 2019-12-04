@@ -32,12 +32,10 @@ func TestDay1FuelForSingleModuleMass(t *testing.T) {
 	}
 }
 
-func TestDay1SumFuelForMasses(t *testing.T) {
-	moduleMasses := [2]int{12, 14}
+func TestDay1SumFuelForManyMasses(t *testing.T) {
 
-	got := SumFuelForMasses(moduleMasses)
-
-	want := 4
+	got := SumFuelForMasses([]int{12, 14, 1969})
+	want := 658
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
