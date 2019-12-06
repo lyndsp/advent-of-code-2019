@@ -7,10 +7,7 @@ which has no mass and is outside the scope of this calculation.
 
 So, for each module mass, calculate its fuel and add it to the total.
 Then, treat the fuel amount you just calculated as the input mass and repeat the process,
-continuing until a fuel requirement is zero or negative. For example:
-
-The fuel required by a module of mass 100756 and its fuel is:
-33583 + 11192 + 3728 + 1240 + 411 + 135 + 43 + 12 + 2 = 50346.
+continuing until a fuel requirement is zero or negative.
 */
 
 package main
@@ -25,9 +22,9 @@ This fuel requires no further fuel (2 divided by 3 and rounded down is 0,
 	which would call for a negative fuel),
 so the total fuel required is still just 2.
 */
-func TestDay1Part2FuelForSimpleSingleModuleMass(t *testing.T) {
+func TestDay1Part2FuelForSimpleSmallMass(t *testing.T) {
 
-	got := CalculateFuelRequiredForFuel(14)
+	got := CalculateFuelRequiredForMassAndFuel(14)
 	want := 2
 
 	if got != want {
@@ -42,10 +39,24 @@ Then, this fuel requires 216 more fuel (654 / 3 - 2).
 which requires 5 fuel, which requires no further fuel.
 So, the total fuel required for a module of mass 1969 is 654 + 216 + 70 + 21 + 5 = 966.
 */
-func TestDay1Part2FuelForRecursiveSingleModuleMass(t *testing.T) {
+func TestDay1Part2FuelForLargerMass(t *testing.T) {
 
-	got := CalculateFuelRequiredForFuel(1969)
+	got := CalculateFuelRequiredForMassAndFuel(1969)
 	want := 966
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+/*
+The fuel required by a module of mass 100756 and its fuel is:
+33583 + 11192 + 3728 + 1240 + 411 + 135 + 43 + 12 + 2 = 50346.
+*/
+func TestDay1Part2FuelForVeryLargeMass(t *testing.T) {
+
+	got := CalculateFuelRequiredForMassAndFuel(100756)
+	want := 50346
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
