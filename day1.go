@@ -7,6 +7,25 @@ import (
 	"strconv"
 )
 
+// CalculateFuelRequiredForFuel calculates fuel for fuel for given mass.
+func CalculateFuelRequiredForFuel(mass int) int {
+	var fuelRequired = CalculateFuelRequired(mass)
+
+	var totalFuelRequiredForMassAndFuel = 0
+
+	for {
+		totalFuelRequiredForMassAndFuel += fuelRequired
+
+		if fuelRequired <= 6 {
+			break
+		}
+
+		fuelRequired = CalculateFuelRequired(fuelRequired)
+	}
+
+	return totalFuelRequiredForMassAndFuel
+}
+
 // CalculateFuelRequired calculates fuel for given mass
 func CalculateFuelRequired(mass int) int {
 	return (mass / 3) - 2
